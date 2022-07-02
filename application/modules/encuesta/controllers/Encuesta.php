@@ -6,6 +6,7 @@ class Encuesta extends CI_Controller {
     parent::__construct();
     $this->load->model('encuesta/encuesta_model');
     $this->load->model('carrera/carrera_model');
+    $this->load->model('sede/sede_model');
   }
 
   /**
@@ -39,7 +40,7 @@ class Encuesta extends CI_Controller {
         $output_arr = SSP::complex( $_GET, $sql_details, $table, $primaryKey, $columns, null, null );
         foreach ($output_arr['data'] as $key => $value) {
             $id = $output_arr['data'][$key][0];
-            $output_arr['data'][$key][0] = '<div class="text-center"><input type="checkbox" name="id[]" value="'.$id.'"></div>';
+            $output_arr['data'][$key][0] = '<td class="sorting_1"><input type="checkbox" name="id[]" value="'.$id.'"></td>';
             $output_arr['data'][$key][2] = $this->encuesta_model->getCarrera($output_arr['data'][$key][2]);
             $output_arr['data'][$key][3] = $this->encuesta_model->getSede($output_arr['data'][$key][3]);
             if (CheckPermission('user', "all_update")) {
@@ -54,20 +55,40 @@ class Encuesta extends CI_Controller {
 
     public function get_modal() {
         is_login();
-        if($this->input->post('id')){
-            $data['encuestaData'] = getDataByid('encuesta', $this->input->post('id'), 'id'); 
+        $data['carreras'] = $this->carrera_model->getCarreras();
+        $data['sedes'] = $this->sede_model->getSedes();
+        if ($this->input->post('id')) {
+            $data['encuestaData'] = getDataByid('encuesta', $this->input->post('id'), 'id');
             echo $this->load->view('add_encuesta', $data, true);
         } else {
-            echo $this->load->view('add_encuesta', '', true);
+            echo $this->load->view('add_encuesta', $data, true);
         }
         exit;
+    }
+
+    public function add_edit($id='') {   
+        $data = $this->input->post();
+        if ($this->input->post('id')) {
+            $id = $this->input->post('id');
+        }
+        unset($data['submit']);
+        if ($id != '') {
+            $this->encuesta_model->updateRow('encuesta', 'id', $id, $data);
+            $this->session->set_flashdata('messagePr', 'Your data updated Successfully..');
+            redirect( base_url().'encuesta', 'refresh');
+        } else { 
+            $this->encuesta_model->insertRow('encuesta', $data);
+            $this->session->set_flashdata('messagePr', 'Your data inserted Successfully..');
+            redirect( base_url().'encuesta', 'refresh');
+        }
+    
     }
 
     public function delete($id){
         is_login(); 
         $ids = explode('-', $id);
         foreach ($ids as $id) {
-            $this->Encuesta_model->delete($id); 
+            $this->encuesta_model->delete($id); 
         }
        redirect(base_url().'encuesta', 'refresh');
     }

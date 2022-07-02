@@ -104,9 +104,17 @@
             </li>
           <?php } ?>
 
-          <li class="<?= ($this->router->class === "encuesta") ? "active" : "not-active" ?>">
-            <a href="<?php echo base_url("encuesta"); ?>"><i class="fa fa-info-circle"></i> <span>Encuesta</span></a>
-          </li>
+          <?php if (CheckPermission("user", "own_read")) { ?>
+            <li class="<?= ($this->router->class === "encuesta") ? "active" : "not-active" ?>">
+              <a href="<?php echo base_url("encuesta"); ?>"><i class="fa fa-info-circle"></i> <span>Encuestas</span></a>
+            </li>
+          <?php } ?>
+
+          <?php if (CheckPermission("user", "own_read")) { ?>
+            <li class="<?= ($this->router->class === "materia") ? "active" : "not-active" ?>">
+              <a href="<?php echo base_url("materia"); ?>"><i class="fa fa-info-circle"></i> <span>Materias</span></a>
+            </li>
+          <?php } ?>
           
           <?php if (isset($this->session->userdata('user_details')[0]->user_type) && $this->session->userdata('user_details')[0]->user_type == 'admin') { ?>
             <li class="<?= ($this->router->class === "setting") ? "active" : "not-active" ?>">

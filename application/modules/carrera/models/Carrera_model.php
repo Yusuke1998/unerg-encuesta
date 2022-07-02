@@ -7,6 +7,17 @@ class Carrera_model extends CI_Model {
 	    parent::__construct();
 	    $this->load->database();
 	} 
+
+	public function getCarreras($codigo = null) {
+		$this->db->select('*');
+		$this->db->from('carreras');
+		if ($codigo) {
+			$this->db->where('codigo', $codigo);
+		}
+		$this->db->order_by('carrera', 'asc');
+		$query = $this->db->get();
+		return $query->result();
+	}
 	
 	public function get_encuestas() {	
 		return $this->db->get('encuestas')->result();

@@ -1,27 +1,23 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 /**
- * Sede_model Class extends CI_Model
+ * Materia_model Class extends CI_Model
  */
-class Sede_model extends CI_Model {       
+class Materia_model extends CI_Model {       
 	function __construct(){            
 	    parent::__construct();
 	    $this->load->database();
 	} 
 
-	public function getSedes($codigo = null) {
+	public function getMaterias($id = null) {
 		$this->db->select('*');
-		$this->db->from('sedes');
-		if ($codigo) {
-			$this->db->where('codigo', $codigo);
+		$this->db->from('materias_encuesta');
+		if ($id) {
+			$this->db->where('id', $id);
 		}
-		$this->db->order_by('sede', 'asc');
+		$this->db->order_by('materia', 'asc');
 		$query = $this->db->get();
 		return $query->result();
 	}
-	
-	public function get_encuestas() {	
-		return $this->db->get('encuestas')->result();
-    }
 
 	public function insertRow($table, $data){
 	  	$this->db->insert($table, $data);
@@ -34,9 +30,9 @@ class Sede_model extends CI_Model {
 		return true;
 	}
 
-	function delete($codigo='') {
-		$this->db->where('codigo', $codigo);  
-		$this->db->delete('sedes'); 
+	function delete($id = '') {
+		$this->db->where('id', $id);  
+		$this->db->delete('materias_encuesta'); 
 	}
 	
 }?>

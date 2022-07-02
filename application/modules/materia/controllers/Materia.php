@@ -1,10 +1,11 @@
 <?php defined("BASEPATH") OR exit("No direct script access allowed");
 
-class Sede extends CI_Controller {
+class Materia extends CI_Controller {
 
   function __construct() {
     parent::__construct();
-    $this->load->model('sede/sede_model');
+    $this->load->model('materia/materia_model');
+    $this->load->model('encuesta/encuesta_model');
   }
 
   /**
@@ -17,19 +18,14 @@ class Sede extends CI_Controller {
     $this->load->view("include/footer");
   }
 
-  public function get_sedes() {
-    $data = $this->sede_model->getSedes($_POST['codigo']);
-    echo json_encode($data);
-  }
-
   public function dataTable () {
         is_login();
-        $table = 'sedes';
+        $table = 'materias_encuesta';
         $primaryKey = 'id';
         $columns = array(
-            array( 'db' => 'codigo', 'dt' => 0 ),
-            array( 'db' => 'codigo', 'dt' => 1 ),
-            array( 'db' => 'sede', 'dt' => 2 ),
+            array( 'db' => 'id', 'dt' => 0 ),
+            array( 'db' => 'id_encuesta', 'dt' => 1 ),
+            array( 'db' => 'materia', 'dt' => 2 ),
         );
 
         $sql_details = array(
@@ -43,10 +39,10 @@ class Sede extends CI_Controller {
             $codigo = $output_arr['data'][$key][0];
             $output_arr['data'][$key][0] = '<div class="text-center"><input type="checkbox" name="id[]" value="'.$codigo.'"></div>';
             if (CheckPermission('user', "all_update")) {
-                $output_arr['data'][$key][count($output_arr['data'][$key])  - 1] .= '<a id="btnEditRow" class="modalButtonSede mClass"  href="javascript:;" type="button" data-src="'.$codigo.'" title="Edit"><i class="fa fa-pencil" data-id=""></i></a>';
+                $output_arr['data'][$key][count($output_arr['data'][$key])  - 1] .= '<a id="btnEditRow" class="modalButtonMateria mClass"  href="javascript:;" type="button" data-src="'.$codigo.'" title="Edit"><i class="fa fa-pencil" data-id=""></i></a>';
             }
             if (CheckPermission('user', "all_delete")) {
-                $output_arr['data'][$key][count($output_arr['data'][$key])  - 1] .= '<a style="cursor:pointer;" data-toggle="modal" class="mClass" onclick="setId('.$codigo.', \'sede\')" data-target="#cnfrm_delete" title="delete"><i class="fa fa-trash-o" ></i></a>';
+                $output_arr['data'][$key][count($output_arr['data'][$key])  - 1] .= '<a style="cursor:pointer;" data-toggle="modal" class="mClass" onclick="setId('.$codigo.', \'materia\')" data-target="#cnfrm_delete" title="delete"><i class="fa fa-trash-o" ></i></a>';
             }
         } 
         echo json_encode($output_arr);
@@ -60,9 +56,9 @@ class Sede extends CI_Controller {
         is_login(); 
         $codigos = explode('-', $codigo);
         foreach ($codigos as $codigo) {
-            $this->Sede_model->delete($codigo); 
+            $this->Materia_model->delete($codigo); 
         }
-       redirect(base_url().'sede', 'refresh');
+       redirect(base_url().'materia', 'refresh');
     }
 }
 ?>

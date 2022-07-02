@@ -93,12 +93,12 @@
         <input type="hidden"  name="users_id" value="<?php echo isset($userData->users_id)?$userData->users_id:'';?>">
         <input type="hidden" name="fileOld" value="<?php echo isset($userData->profile_pic)?$userData->profile_pic:'';?>">
         <div class="box-footer sub-btn-wdt">
-          <button type="submit" name="edit" value="edit" class="btn btn-success wdt-bg">Update</button>
+          <button type="submit" name="edit" value="edit" class="btn btn-success wdt-bg">Actualizar</button>
         </div>
               <!-- /.box-body -->
         <?php }else{?>
         <div class="box-footer sub-btn-wdt">
-          <button type="submit" name="submit" value="add" class="btn btn-success wdt-bg">Add</button>
+          <button type="submit" name="submit" value="add" class="btn btn-success wdt-bg">Guardar</button>
         </div>
         <?php }?>
       </form>

@@ -141,14 +141,14 @@ $(document).ready(function() {
             part = '<p><strong>Info:</strong> '+data.noTemplate+'</p>';
           }
           $obj.parents('div.row').prepend('<div class="col-md-12 m-t-20 msg-div"><div class="alert alert-info" role="alert">'+
-                                  '<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>'+
-                                  '<div class="msg-p">'+
-                                  '<p><strong>Success:</strong> '+data.seccessCount+' Invitation Sent successfully</p>'+
-                                  '<p><strong>Info:</strong> '+data.existCount+' Emails Alredy present in database</p>'+
-                                  '<p><strong>Info:</strong> '+data.invalidEmailCount+' Invalid Emails Found</p>'+part+
-                                  '</div>'+
-                                  '</div>'+
-                                '</div>');
+          '<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>'+
+          '<div class="msg-p">'+
+          '<p><strong>Success:</strong> '+data.seccessCount+' Invitation Sent successfully</p>'+
+          '<p><strong>Info:</strong> '+data.existCount+' Emails Alredy present in database</p>'+
+          '<p><strong>Info:</strong> '+data.invalidEmailCount+' Invalid Emails Found</p>'+part+
+          '</div>'+
+          '</div>'+
+        '</div>');
           $obj.html('Send');
         }
       });            
@@ -209,7 +209,6 @@ $(document).ready(function() {
 });
 
 $(".content-wrapper").on("click",".modalButtonEncuesta", function(e) {
-  console.log('event?')
   $.ajax({
     url : $('body').attr('data-base-url') + 'encuesta/get_modal',
     method: 'post', 
@@ -221,6 +220,17 @@ $(".content-wrapper").on("click",".modalButtonEncuesta", function(e) {
     $('#nameModal_encuesta').modal('show'); 
   })
 });
+
+$(".modal-body").on("change", '[name="carrera"]', function(e) {
+  /* var codigo = $(this).val();
+  $.ajax({
+    url: $('body').attr('data-base-url') + 'sede/get_sedes',
+    method:'post',
+    data: { codigo }
+  }).done(function(data) {
+    $('#carrera_id').html(data);
+  }); */
+})
 
 function setId(id, module) {
   var url =  $('body').attr('data-base-url');
