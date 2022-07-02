@@ -23,9 +23,6 @@
           <label for="sede">Sede</label>
           <select class="form-control" id="sede" name="sede">
             <option value="">Seleccione</option>
-            <?php foreach ($sedes as $sede) { ?>
-              <option value="<?php echo $sede->codigo ?>"><?php echo $sede->sede ?></option>
-            <?php } ?>
           </select>
         </div>
       </div>
@@ -39,6 +36,14 @@
         <div class="form-group">
           <label for="hasta">Hasta</label>
           <input type="date" class="form-control" id="hasta" name="hasta" placeholder="Hasta">
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="materias">Materias</label>
+          <select class="form-control chosen-select" id="materias" name="materias[]" multiple>
+            <option value="">Seleccione</option>
+          </select>
         </div>
       </div>
       <?php if (!empty($encuestaData->id)) {?>

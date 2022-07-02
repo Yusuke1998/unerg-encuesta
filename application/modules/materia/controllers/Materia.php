@@ -18,6 +18,21 @@ class Materia extends CI_Controller {
     $this->load->view("include/footer");
   }
 
+  public function pensum($sede, $carrera) {
+    $pensum = $this->materia_model->getPensum($sede, $carrera);
+    $result = "";
+    if ($pensum) {
+        $url = "http://api.unerg.edu.ve/materias.php?p=$pensum";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        echo $result;
+    }
+    return $result;
+  }
+
   public function dataTable () {
         is_login();
         $table = 'materias_encuesta';

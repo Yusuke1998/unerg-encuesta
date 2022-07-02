@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/css/custom.css'); ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/css/buttons.dataTables.min.css'); ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/daterangepicker.css'); ?>" />
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/js/chosen/chosen.css');?>" />
   <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
   <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
   <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>

@@ -9,14 +9,13 @@ class Sede_model extends CI_Model {
 	} 
 
 	public function getSedes($codigo = null) {
-		$this->db->select('*');
-		$this->db->from('sedes');
+		$query = "select DISTINCT s.sede, s.codigo from sedes s
+		join pensum p on p.sede = s.codigo";
 		if ($codigo) {
-			$this->db->where('codigo', $codigo);
+			$query .= " where p.carrera = '$codigo'";
 		}
-		$this->db->order_by('sede', 'asc');
-		$query = $this->db->get();
-		return $query->result();
+		$result = $this->db->query($query);
+		return $result->result();
 	}
 	
 	public function get_encuestas() {	

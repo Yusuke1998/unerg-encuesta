@@ -19,6 +19,21 @@ class Materia_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function getPensum($sede, $carrera) {
+		$this->db->select('pensum');
+		$this->db->from('pensum');
+		$this->db->where('sede', $sede);
+		$this->db->where('carrera', $carrera);
+		
+		$query = $this->db->get();
+		$result = $query->result();
+		if (count($result) > 0) {
+			return $result[0]->pensum;
+		} else {
+			return null;
+		}
+	}
+
 	public function insertRow($table, $data){
 	  	$this->db->insert($table, $data);
 	  	return $this->db->insert_id();

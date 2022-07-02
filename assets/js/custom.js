@@ -208,6 +208,8 @@ $(document).ready(function() {
   /* Script for Templates End here */
 });
 
+$(".chosen-select").chosen();
+
 $(".content-wrapper").on("click",".modalButtonEncuesta", function(e) {
   $.ajax({
     url : $('body').attr('data-base-url') + 'encuesta/get_modal',
@@ -222,14 +224,41 @@ $(".content-wrapper").on("click",".modalButtonEncuesta", function(e) {
 });
 
 $(".modal-body").on("change", '[name="carrera"]', function(e) {
-  /* var codigo = $(this).val();
+  var codigo = $(this).val();
   $.ajax({
     url: $('body').attr('data-base-url') + 'sede/get_sedes',
     method:'post',
     data: { codigo }
   }).done(function(data) {
-    $('#carrera_id').html(data);
-  }); */
+    $('#sede').find('option[value]').remove();
+    $('#sede').append('<option value="">Seleccione</option>');
+    if (data) {
+      JSON.parse(data).forEach(function(item) {
+        $('#sede').append('<option value="'+item.codigo+'">'+item.sede+'</option>');
+      });
+    }
+  });
+})
+
+$(".modal-body").on("change", '[name="sede"]', function(e) {
+  let sede = $(this).val();
+  let carrera = $('[name="carrera"]').val();
+  $.ajax({
+    url: $('body').attr('data-base-url') + 'materia/pensum/'+sede+'/'+carrera, 
+    method:'post',
+    data: { sede, carrera }
+  }).done(function(data) {
+    if (data) {
+      const resp = JSON.parse(data);
+      if (resp.cod_respuesta == "1") {
+        let { materias } = resp;
+        $('#materias').find('option[value]').remove();
+        materias.forEach(function(item) {
+          $('#materias').append(`<option value="${item}">${item}</option>`);
+        });
+      }
+    }
+  })
 })
 
 function setId(id, module) {

@@ -29,7 +29,7 @@ class Encuesta extends CI_Controller {
             array( 'db' => 'carrera', 'dt' => 2 ),
             array( 'db' => 'sede', 'dt' => 3 ),
             array( 'db' => 'desde', 'dt' => 4 ),
-            array( 'db' => 'hasta', 'dt' => 5 )
+            array( 'db' => 'hasta', 'dt' => 5 ),
         );
         $sql_details = array(
             'user' => $this->db->username,
@@ -40,6 +40,7 @@ class Encuesta extends CI_Controller {
         $output_arr = SSP::complex( $_GET, $sql_details, $table, $primaryKey, $columns, null, null );
         foreach ($output_arr['data'] as $key => $value) {
             $id = $output_arr['data'][$key][0];
+            $output_arr['data'][$key][count($output_arr['data'][$key])] = '';
             $output_arr['data'][$key][0] = '<td class="sorting_1"><input type="checkbox" name="id[]" value="'.$id.'"></td>';
             $output_arr['data'][$key][2] = $this->encuesta_model->getCarrera($output_arr['data'][$key][2]);
             $output_arr['data'][$key][3] = $this->encuesta_model->getSede($output_arr['data'][$key][3]);
@@ -77,7 +78,18 @@ class Encuesta extends CI_Controller {
             $this->session->set_flashdata('messagePr', 'Your data updated Successfully..');
             redirect( base_url().'encuesta', 'refresh');
         } else { 
-            $this->encuesta_model->insertRow('encuesta', $data);
+            $materias = $data['materias'];
+            unset($data['materias']);
+            $id_encuesta = $this->encuesta_model->insertRow('encuesta', $data);
+            if ($id_encuesta) {
+                foreach ($materias as $key => $value) {
+                    $data = array(
+                        'id_encuesta' => $id_encuesta,
+                        'materia' => $value
+                    );
+                    $this->encuesta_model->insertRow('materias_encuesta', $data);
+                }
+            }
             $this->session->set_flashdata('messagePr', 'Your data inserted Successfully..');
             redirect( base_url().'encuesta', 'refresh');
         }
