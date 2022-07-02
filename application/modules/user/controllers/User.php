@@ -316,9 +316,8 @@ class User extends CI_Controller {
         }
         if($this->input->post('fileOld')) {  
             $newname = $this->input->post('fileOld');
-            $profile_pic =$newname;
+            $profile_pic = $newname;
         } else {
-            $data[$name]='';
             $profile_pic ='user.png';
         }
         foreach($_FILES as $name => $fileInfo)

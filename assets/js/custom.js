@@ -208,6 +208,20 @@ $(document).ready(function() {
   /* Script for Templates End here */
 });
 
+$(".content-wrapper").on("click",".modalButtonEncuesta", function(e) {
+  console.log('event?')
+  $.ajax({
+    url : $('body').attr('data-base-url') + 'encuesta/get_modal',
+    method: 'post', 
+    data : {
+      id: $(this).attr('data-src')
+    }
+  }).done(function(data) {
+    $('#nameModal_encuesta').find('.modal-body').html(data);
+    $('#nameModal_encuesta').modal('show'); 
+  })
+});
+
 function setId(id, module) {
   var url =  $('body').attr('data-base-url');
   $("#cnfrm_delete").find("a.yes-btn").attr("href",url+"/"+ module +"/delete/"+id);

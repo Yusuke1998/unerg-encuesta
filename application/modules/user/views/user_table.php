@@ -11,12 +11,12 @@
       <div class="col-xs-12">
         <div class="box box-success">
           <div class="box-header with-border">
-            <h3 class="box-title">User</h3>
+            <h3 class="box-title">Usuarios</h3>
             <div class="box-tools">
               <?php if(CheckPermission("users", "own_create")){ ?>
-              <button type="button" class="btn-sm  btn btn-success modalButtonUser" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> Add User</button>
+              <button type="button" class="btn-sm  btn btn-success modalButtonUser" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> Nuevo Usuario</button>
               <?php } if(setting_all('email_invitation') == 1){  ?>
-              <button type="button" class="btn-sm  btn btn-success InviteUser" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> Invite People</button>
+              <button type="button" class="btn-sm  btn btn-success InviteUser" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> Invitar Persona</button>
               <?php } ?>
             </div>
           </div>
@@ -26,10 +26,10 @@
               <thead>
                 <tr>
                   <th><input type="checkbox" class="selAll"></th>
-                  <th>Status</th>
-									<th>Name</th>
-									<th>Email</th>
-                  <th>Action</th>
+                  <th>Estatus</th>
+									<th>Nombre</th>
+									<th>Correo Electronico</th>
+                  <th>Accion</th>
                 </tr>
               </thead>
               <tbody>
