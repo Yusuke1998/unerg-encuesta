@@ -3,10 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $active_group = 'default';
 $query_builder = TRUE;
-$hostname ="{HOSTNAME}";
-$username ="{USERNAME}";
-$password ="{PASSWORD}";
-$database ="{DATABASE}";	
+$hostname ="mariadb";
+$username ="root";
+$password ="general";
+$database ="unerg-encuesta";	
 
 $db['default'] = array(
 	'dsn'	=> '',
