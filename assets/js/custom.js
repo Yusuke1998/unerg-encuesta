@@ -98,7 +98,6 @@ $(document).ready(function() {
         .parents('div.form-group')
         .addClass('has-error');
       }
-      console.log(data);
     })
   })
 
@@ -134,7 +133,6 @@ $(document).ready(function() {
         },
         dataType: 'json'
       }).done(function(data){
-        console.log(data);
         if(data) {
           var part = '';
           if(data.noTemplate != 0){
@@ -228,39 +226,17 @@ $(".content-wrapper").on("click",".modalButtonEncuesta", function(e) {
         dataType: 'json'
       }).done(function(data) {
         const { carrera, sede } = data;
-        $.ajax({
-          url: $('body').attr('data-base-url') + 'sede/get_sedes',
-          method:'post',
-          data: { codigo: carrera },
-        }).done(function(data) {
-          $('#sede').find('option[value]').remove();
-          $('#sede').append('<option value="">Seleccione</option>');
-          if (data) {
-            JSON.parse(data).forEach(function(item) {
-              $('#sede').append(`<option value="${item.codigo}" ${sede == item.codigo ? 'selected' : ''}>${item.sede}</option>`);
-            });
-          }
-        });
+        makeSelectSede(carrera, sede);
+        makeSelectMaterias(carrera, sede, editMode);
       })
     }
   })
 });
 
+
 $(".modal-body").on("change", '[name="carrera"]', function(e) {
   var codigo = $(this).val();
-  $.ajax({
-    url: $('body').attr('data-base-url') + 'sede/get_sedes',
-    method:'post',
-    data: { codigo }
-  }).done(function(data) {
-    $('#sede').find('option[value]').remove();
-    $('#sede').append('<option value="">Seleccione</option>');
-    if (data) {
-      JSON.parse(data).forEach(function(item) {
-        $('#sede').append('<option value="'+item.codigo+'">'+item.sede+'</option>');
-      });
-    }
-  });
+  makeSelectSede(codigo, null);
 })
 
 $(".modal-body").on("change", '[name="sede"]', function(e) {
@@ -286,6 +262,53 @@ $(".modal-body").on("change", '[name="sede"]', function(e) {
     $('[type="submit"]').prop('disabled', false);
   })
 })
+
+function makeSelectSede(carrera, sede) {
+  $.ajax({
+    url: $('body').attr('data-base-url') + 'sede/get_sedes',
+    method:'post',
+    data: { codigo: carrera },
+  }).done(function(data) {
+    $('#sede').find('option[value]').remove();
+    $('#sede').append('<option value="">Seleccione</option>');
+    if (data) {
+      JSON.parse(data).forEach(function(item) {
+        $('#sede').append(`<option value="${item.codigo}" ${sede == item.codigo ? 'selected' : ''}>${item.sede}</option>`);
+      });
+    }
+  });
+}
+
+function makeSelectMaterias(carrera, sede, encuesta) {
+  $('[type="submit"]').prop('disabled', true);
+  $.ajax({
+    url: $('body').attr('data-base-url') + 'materia/pensum/'+sede+'/'+carrera, 
+    method:'post',
+    data: { sede, carrera }
+  }).done(function(data) {
+    if (data) {
+      const resp = JSON.parse(data);
+      if (resp.cod_respuesta == "1") {
+        let { materias } = resp;
+        $('#materias').find('option[value]').remove();
+        $.ajax({
+          url: $('body').attr('data-base-url') + 'encuesta/get_materias'+'/'+encuesta,
+          method: 'get',
+          dataType: 'json'
+        }).done(function(data) {
+          if (data) {
+            materias.forEach(function(item) {
+              const selected = data.find(x => x.materia == item);
+              $('#materias').append(`<option ${selected ? 'selected' : ''} value="${item}">${item}</option>`);
+            });
+          }
+        })
+      }
+    }
+  }).always(function() {
+    $('[type="submit"]').prop('disabled', false);
+  })
+}
 
 function setId(id, module) {
   var url =  $('body').attr('data-base-url');

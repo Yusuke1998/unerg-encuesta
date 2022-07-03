@@ -24,8 +24,9 @@
                             <thead>
                                 <tr>
                                     <th><input type="checkbox" class="selAll"></th>
-                                    <th>Encuesta</th>
+                                    <th>Encuesta (periodo)</th>
                                     <th>Materia</th>
+                                    <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>

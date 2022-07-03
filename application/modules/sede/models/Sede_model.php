@@ -33,9 +33,11 @@ class Sede_model extends CI_Model {
 		return true;
 	}
 
-	function delete($codigo='') {
-		$this->db->where('codigo', $codigo);  
-		$this->db->delete('sedes'); 
+	function delete($codigo = null) {
+		if ($codigo) {
+			$this->db->where('codigo', $codigo);  
+			$this->db->delete('sedes'); 
+		}
 	}
 	
 }?>

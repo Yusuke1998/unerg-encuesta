@@ -34,6 +34,19 @@ class Materia_model extends CI_Model {
 		}
 	}
 
+	public function getPeriodo($id_encuesta) {
+		$this->db->select('periodo');
+		$this->db->from('encuesta');
+		$this->db->where('id', $id_encuesta);
+		$query = $this->db->get();
+		$result = $query->result();
+		if (count($result) > 0) {
+			return $result[0]->periodo;
+		} else {
+			return null;
+		}
+	}
+
 	public function insertRow($table, $data){
 	  	$this->db->insert($table, $data);
 	  	return $this->db->insert_id();
@@ -45,9 +58,11 @@ class Materia_model extends CI_Model {
 		return true;
 	}
 
-	function delete($id = '') {
-		$this->db->where('id', $id);  
-		$this->db->delete('materias_encuesta'); 
+	function delete($id = null) {
+		if ($id) {
+			$this->db->where('id', $id);  
+			$this->db->delete('materias_encuesta'); 
+		}
 	}
 	
 }?>

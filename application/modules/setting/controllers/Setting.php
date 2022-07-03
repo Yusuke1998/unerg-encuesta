@@ -64,7 +64,7 @@ class Setting extends CI_Controller {
 		{
 			$this->Setting_model->updateRow('setting', 'keys', $key, array('value'=>$value));
 		}
-		$this->session->set_flashdata('message', 'Your data updated Successfully..');
+		$this->session->set_flashdata('message', 'Los datos fueron actualizados Exitosamente…');
 		if($this->input->post('mail_setting')){
 			redirect( base_url().'setting#emailSetting', 'refresh');
 		} else {
@@ -121,7 +121,7 @@ class Setting extends CI_Controller {
 			}
 			$this->Setting_model->updateRow('permission', 'user_type', $key, array('data'=>json_encode($arr)));
 		}
-		$this->session->set_flashdata('message', 'Your data updated Successfully..');
+		$this->session->set_flashdata('message', 'Los datos fueron actualizados Exitosamente…');
 		redirect( base_url().'setting#permissionSetting', 'refresh');
 	}
 }

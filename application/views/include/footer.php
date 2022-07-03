@@ -72,13 +72,13 @@
         <div class="modal-content col-md-6">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Confirmation</h4>
+                <h4 class="modal-title">Confirmación</h4>
             </div>
             <div class="modal-body">
-                <p>Do you really want to delete </p>
+                <p>¿De verdad quieres eliminar?</p>
             </div>
             <div class="modal-footer">
-                <a class="btn btn-small  yes-btn btn-danger" href="">yes</a>
+                <a class="btn btn-small yes-btn btn-danger" href="">si</a>
                 <button type="button" class="btn btn-default" data-dismiss="modal">no</button>
             </div>
         </div> 

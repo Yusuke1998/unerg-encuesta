@@ -52,12 +52,15 @@ class Materia extends CI_Controller {
         $output_arr = SSP::complex( $_GET, $sql_details, $table, $primaryKey, $columns, null, null );
         foreach ($output_arr['data'] as $key => $value) {
             $codigo = $output_arr['data'][$key][0];
+            $encuesta = $output_arr['data'][$key][1];
             $output_arr['data'][$key][0] = '<div class="text-center"><input type="checkbox" name="id[]" value="'.$codigo.'"></div>';
+            $output_arr['data'][$key][1] = $this->materia_model->getPeriodo($encuesta);
+            $output_arr['data'][$key][3] = '';
             if (CheckPermission('user', "all_update")) {
-                $output_arr['data'][$key][count($output_arr['data'][$key])  - 1] .= '<a id="btnEditRow" class="modalButtonMateria mClass"  href="javascript:;" type="button" data-src="'.$codigo.'" title="Edit"><i class="fa fa-pencil" data-id=""></i></a>';
+                $output_arr['data'][$key][3] .= '<a id="btnEditRow" class="modalButtonMateria mClass"  href="javascript:;" type="button" data-src="'.$codigo.'" title="Edit"><i class="fa fa-pencil" data-id=""></i></a>';
             }
             if (CheckPermission('user', "all_delete")) {
-                $output_arr['data'][$key][count($output_arr['data'][$key])  - 1] .= '<a style="cursor:pointer;" data-toggle="modal" class="mClass" onclick="setId('.$codigo.', \'materia\')" data-target="#cnfrm_delete" title="delete"><i class="fa fa-trash-o" ></i></a>';
+                $output_arr['data'][$key][3] .= '<a style="cursor:pointer;" data-toggle="modal" class="mClass" onclick="setId('.$codigo.', \'materia\')" data-target="#cnfrm_delete" title="delete"><i class="fa fa-trash-o" ></i></a>';
             }
         } 
         echo json_encode($output_arr);
@@ -67,13 +70,13 @@ class Materia extends CI_Controller {
      * This function is used to delete users
      * @return Void
      */
-    public function delete($codigo){
+    public function delete($id){
         is_login(); 
-        $codigos = explode('-', $codigo);
-        foreach ($codigos as $codigo) {
-            $this->Materia_model->delete($codigo); 
+        $ids = explode('-', $id);
+        foreach ($ids as $id) {
+            $this->materia_model->delete($id); 
         }
-       redirect(base_url().'materia', 'refresh');
+        redirect(base_url().'materia', 'refresh');
     }
 }
 ?>

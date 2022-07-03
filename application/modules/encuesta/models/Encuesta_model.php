@@ -28,6 +28,14 @@ class Encuesta_model extends CI_Model {
 		return $query->row()->sede;
     }
 
+	public function getMaterias($id) {
+		$this->db->select('materia');
+		$this->db->where('id_encuesta', $id);
+		$this->db->from('materias_encuesta');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	public function insertRow($table, $data){
 	  	$this->db->insert($table, $data);
 	  	return  $this->db->insert_id();
@@ -39,9 +47,18 @@ class Encuesta_model extends CI_Model {
 		return true;
 	}
 
-	function delete($id='') {
-		$this->db->where('id', $id);  
-		$this->db->delete('encuesta'); 
+	function delete($id = null) {
+		if ($id) {
+			$this->db->where('id', $id);  
+			$this->db->delete('encuesta'); 
+		}
+	}
+
+	function deleteMaterias($id = null) {
+		if ($id) {
+			$this->db->where('id_encuesta', $id);  
+			$this->db->delete('materias_encuesta'); 
+		}
 	}
 	
 }?>

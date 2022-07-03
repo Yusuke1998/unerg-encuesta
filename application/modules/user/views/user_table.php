@@ -29,7 +29,7 @@
                   <th>Estatus</th>
 									<th>Nombre</th>
 									<th>Correo Electronico</th>
-                  <th>Accion</th>
+                  <th>&nbsp;</th>
                 </tr>
               </thead>
               <tbody>

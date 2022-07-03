@@ -379,7 +379,7 @@ class User extends CI_Controller {
             }
             $data['profile_pic'] = $profile_pic;
             $this->User_model->updateRow('users', 'users_id', $id, $data);
-            $this->session->set_flashdata('messagePr', 'Your data updated Successfully..');
+            $this->session->set_flashdata('messagePr', 'Los datos fueron actualizados Exitosamente…');
             redirect( base_url().'user/'.$redirect, 'refresh');
         } else { 
             if($this->input->post('user_type') != 'admin') {

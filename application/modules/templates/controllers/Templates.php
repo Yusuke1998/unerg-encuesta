@@ -28,14 +28,14 @@ class Templates extends CI_Controller {
 			unset($data['save']);
 			unset($data['id']);
 			$this->Templates_model->updateRow('templates', 'id', $id, $data);
-			$this->session->set_flashdata('message', 'Your data updated Successfully..');
+			$this->session->set_flashdata('message', 'Los datos fueron actualizados Exitosamente…');
       		redirect('setting#templates-div'); 
 		} else { 
 			unset($data['submit']);
 			unset($data['fileOld']);
 			unset($data['save']);
 			$insert_id = $this->Templates_model->insertRow('templates', $data);
-			$this->session->set_flashdata('message', 'Your data inserted Successfully..');
+			$this->session->set_flashdata('message', 'Los datos fueron insertados con éxito...');
 			redirect('setting#templates-div');
 		}
 	}

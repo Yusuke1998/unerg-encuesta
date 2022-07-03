@@ -29,7 +29,7 @@
                                     <th>Sede</th>
                                     <th>Desde</th>
                                     <th>Hasta</th>
-                                    <th>Accion</th>
+                                    <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
