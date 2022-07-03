@@ -262,8 +262,6 @@ function ajx_dataTable($table = '', $columns = array(), $Join_condition = '', $w
     'host' => $CI->db->hostname
   );
 
-
-
   $output_arr = SSP::simple($_GET, $sql_details, $table, $primaryKey, $columns, $Join_condition, $where);
 
   foreach ($output_arr['data'] as $key => $value) {

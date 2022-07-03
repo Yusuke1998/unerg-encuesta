@@ -7,6 +7,14 @@ class Encuesta_model extends CI_Model {
 	    parent::__construct();
 	    $this->load->database();
 	} 
+
+	public function getEncuesta($id) {
+		$this->db->select('carrera, sede');
+		$this->db->from('encuesta');
+		$this->db->where('id', $id);
+		$query = $this->db->get();
+		return $query->row();
+	}
 	
 	public function getCarrera($code) {
 		$this->db->where('codigo', $code);

@@ -220,6 +220,29 @@ $(".content-wrapper").on("click",".modalButtonEncuesta", function(e) {
   }).done(function(data) {
     $('#nameModal_encuesta').find('.modal-body').html(data);
     $('#nameModal_encuesta').modal('show'); 
+    editMode = $('[name="id"]').val();
+    if (editMode) {
+      $.ajax({
+        url: $('body').attr('data-base-url') + 'encuesta/get_encuesta'+'/'+editMode,
+        method: 'get',
+        dataType: 'json'
+      }).done(function(data) {
+        const { carrera, sede } = data;
+        $.ajax({
+          url: $('body').attr('data-base-url') + 'sede/get_sedes',
+          method:'post',
+          data: { codigo: carrera },
+        }).done(function(data) {
+          $('#sede').find('option[value]').remove();
+          $('#sede').append('<option value="">Seleccione</option>');
+          if (data) {
+            JSON.parse(data).forEach(function(item) {
+              $('#sede').append(`<option value="${item.codigo}" ${sede == item.codigo ? 'selected' : ''}>${item.sede}</option>`);
+            });
+          }
+        });
+      })
+    }
   })
 });
 
@@ -243,6 +266,7 @@ $(".modal-body").on("change", '[name="carrera"]', function(e) {
 $(".modal-body").on("change", '[name="sede"]', function(e) {
   let sede = $(this).val();
   let carrera = $('[name="carrera"]').val();
+  $('[type="submit"]').prop('disabled', true);
   $.ajax({
     url: $('body').attr('data-base-url') + 'materia/pensum/'+sede+'/'+carrera, 
     method:'post',
@@ -258,6 +282,8 @@ $(".modal-body").on("change", '[name="sede"]', function(e) {
         });
       }
     }
+  }).always(function() {
+    $('[type="submit"]').prop('disabled', false);
   })
 })
 

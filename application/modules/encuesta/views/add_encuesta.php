@@ -4,7 +4,14 @@
       <div class="col-sm-4">
         <div class="form-group">
           <label for="periodo">Periodo</label>
-          <input type="number" class="form-control" id="periodo" name="periodo" placeholder="Periodo">
+          <input 
+            id="periodo" 
+            name="periodo" 
+            type="number" 
+            class="form-control" 
+            placeholder="Periodo"
+            value="<?php echo isset($encuestaData->periodo) ? $encuestaData->periodo : '';?>"
+          >
         </div>
       </div>
       <div class="col-sm-4">
@@ -13,7 +20,10 @@
           <select class="form-control" id="carrera" name="carrera">
             <option value="">Seleccione</option>
             <?php foreach ($carreras as $carrera) { ?>
-              <option value="<?php echo $carrera->codigo ?>"><?php echo $carrera->carrera ?></option>
+              <option 
+                value="<?php echo $carrera->codigo ?>" <?php echo (isset($encuestaData->carrera) && $encuestaData->carrera == $carrera->codigo) ? 'selected' : ''; ?> >
+                <?php echo $carrera->carrera ?>
+              </option>
             <?php } ?>
           </select>
         </div>
@@ -29,13 +39,27 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="desde">Desde</label>
-          <input type="date" class="form-control" id="desde" name="desde" placeholder="Desde">
+          <input 
+            type="date" 
+            class="form-control" 
+            id="desde" 
+            name="desde" 
+            placeholder="Desde"
+            value="<?php echo isset($encuestaData->desde) ? $encuestaData->desde : '';?>"
+          >
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <label for="hasta">Hasta</label>
-          <input type="date" class="form-control" id="hasta" name="hasta" placeholder="Hasta">
+          <input 
+            type="date" 
+            class="form-control" 
+            id="hasta" 
+            name="hasta" 
+            placeholder="Hasta"
+            value="<?php echo isset($encuestaData->hasta) ? $encuestaData->hasta : '';?>"
+          >
         </div>
       </div>
       <div class="col-md-12">

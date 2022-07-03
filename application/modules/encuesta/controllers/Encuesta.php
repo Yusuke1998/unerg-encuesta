@@ -19,6 +19,11 @@ class Encuesta extends CI_Controller {
     $this->load->view("include/footer");
   }
 
+  public function get_encuesta($id) {
+    $encuesta = $this->encuesta_model->getEncuesta($id);
+    echo json_encode($encuesta);
+  }
+
   public function dataTable () {
         is_login();
         $table = 'encuesta';
@@ -74,6 +79,9 @@ class Encuesta extends CI_Controller {
         }
         unset($data['submit']);
         if ($id != '') {
+            $materias = $data['materias'];
+            unset($data['materias']);
+            unset($data['edit']);
             $this->encuesta_model->updateRow('encuesta', 'id', $id, $data);
             $this->session->set_flashdata('messagePr', 'Your data updated Successfully..');
             redirect( base_url().'encuesta', 'refresh');
