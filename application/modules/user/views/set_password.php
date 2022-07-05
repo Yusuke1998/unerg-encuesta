@@ -17,13 +17,13 @@
           <form class="createaccount" action="<?php echo base_url().'user/reset_password'?>" method="post">
             <input type="hidden" name="email" value="<?php echo $email; ?>" class="form-control" placeholder=""  />
             <div class="form-group">
-              <input type="password" id="password1" name="password_confirmation" class="form-control" placeholder="new password..." data-validation="required" />
+              <input type="password" id="password1" name="password_confirmation" class="form-control" placeholder="nueva contraseña..." data-validation="required" />
             </div>
             <div class="form-group">
-              <input type="password" id="password2" name="password" class="form-control" placeholder="confirm Password" data-validation="confirmation" />
+              <input type="password" id="password2" name="password" class="form-control" placeholder="confirma contraseña" data-validation="confirmation" />
             </div>
             <div>
-              <button type="submit" name="sub" value="Set password" class="btn btn-default green-btn submit">Set password</button>
+              <button type="submit" name="sub" value="Set password" class="btn btn-default green-btn submit">Ingresa contraseña</button>
               <!--<a class="btn btn-default submit" >Log in</a>-->         
             </div>
           </form>

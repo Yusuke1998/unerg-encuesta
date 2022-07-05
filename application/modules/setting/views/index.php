@@ -12,7 +12,7 @@
       <!-- Default box -->
       <div class="box box-success" >
         <div class="box-header with-border">
-          <h3 class="box-title">Settings </h3>
+          <h3 class="box-title">Configuraciones </h3>
         </div>
         <div class="box-body" style="background: rgb(249, 250, 252);">
           <div class="row">
@@ -28,19 +28,19 @@
                   <li>
                     <a href="#emailSetting" data-toggle="tab">
                       <i class="fa fa-envelope-o" aria-hidden="true"></i> &nbsp;&nbsp; 
-                      <span>Email</span>
+                      <span>Correo</span>
                     </a>
                   </li>
                   <li id="permis">
                     <a href="#permissionSetting" data-toggle="tab">
                       <i class="fa fa-indent" aria-hidden="true"></i> 
-                      <span>Permission</span>
+                      <span>Permisos</span>
                     </a>
                   </li>
                   <li id="templates">
                     <a href="#templates-div" data-toggle="tab">
                       <i class="fa fa-puzzle-piece" aria-hidden="true"></i> 
-                      <span>Templates</span>
+                      <span>Plantillas</span>
                     </a>
                   </li>
                 </ul>
@@ -60,9 +60,9 @@
                             <div class="box-body">
                               <div class="row">                                    
                                 <div class="form-group">
-                                  <label class="control-label col-sm-2 thfont" for="">Title of website:</label>
+                                  <label class="control-label col-sm-2 thfont" for="">Titulo del sitio:</label>
                                   <div class="col-sm-10">
-                                    <input type="text" name="website" value="<?php echo isset($result['website'])?$result['website'] :'';?>" class="form-control" placeholder="Enter Website Title">
+                                    <input type="text" name="website" value="<?php echo isset($result['website'])?$result['website'] :'';?>" class="form-control" placeholder="Titulo">
                                   </div>
                                 </div>
                                 <?php if(isset($result['UserModules']) && $result['UserModules']=='yes'){ ?>
@@ -70,12 +70,12 @@
                                   <label class="control-label col-sm-2 thfont" for=""></label>
                                   <div class="col-sm-10">
                                     <label for="register_allowed " class="thfont">
-                                      <input name="register_allowed" type="checkbox" id="register_allowed"  <?php if(isset($result['register_allowed'])&& $result['register_allowed']==1){echo'checked="checked"';}?> value="1" > Allow Signup.
+                                      <input name="register_allowed" type="checkbox" id="register_allowed"  <?php if(isset($result['register_allowed'])&& $result['register_allowed']==1){echo'checked="checked"';}?> value="1" > Permitir registro.
                                     </label>
                                   </div>
                                 </div>
                                 <div class="form-group">
-                                  <label class="control-label col-sm-2 thfont" for="">User Type:</label>
+                                  <label class="control-label col-sm-2 thfont" for="">Tipo de usuario:</label>
                                   <div class="col-sm-5">
                                     <select name="user_type[]" class="form-control" multiple="multiple">
                                       <?php $permissiona =getAllDataByTable('permission');
@@ -93,14 +93,14 @@
                                 <br>
                                 <div class="row">     
                                   <div class="form-group col-md-2 col-sm-2  col-xs-2 ">
-                                    <span for="exampleInputFile">Website Logo: </span>
+                                    <span for="exampleInputFile">Logo: </span>
                                   </div>
                                   <div class="form-group pic_size col-sm-4 col-xs-4 text-center" id="logo-holder">
                                     <img class="thumb-image logo setpropileam" src="<?php echo base_url('assets/images').'/'.(isset($result['logo']) && $result['logo'] != '' ?$result['logo']:"logo.png");?>"  alt="logoSite">
                                   </div>
                                   <div class="col-md-3 p-d-0 mrg-left-5">
                                     <div class="fileUpload btn btn-success wdt-bg">
-                                      <span>Change Logo</span>
+                                      <span>Cambiar logo</span>
                                         <input type="file" class="upload" name="logo" id="logoSite" name="logo"  value="" accept="image/*">
                                         <input type="hidden" name="fileOldlogo" value="<?php echo isset($result['logo'])?$result['logo']: "";?>">
                                     </div>
@@ -108,14 +108,14 @@
                                 </div>
                                 <div class="row">
                                   <div class="form-group col-md-2 col-sm-2  col-xs-2 dsize">
-                                    <span for="exampleInputFile" class="thfont">Website Favicon: </span>
+                                    <span for="exampleInputFile" class="thfont">Favicon: </span>
                                   </div>
                                   <div class=" form-group pic_size col-sm-4 col-xs-4 text-center" id="favicon-holder" >
                                     <img class="thumb-image favicon setpropileam" src="<?php echo base_url('assets/images').'/'.(isset($result['favicon']) && $result['favicon'] != ''?$result['favicon']:"favicon.ico");?>"  alt="favicon">
                                   </div>
                                     <div class="col-md-3 p-d-0 mrg-left-5">
                                       <div class="fileUpload btn btn-success wdt-bg">
-                                        <span>Change Favicon</span>
+                                        <span>Cambiar icono</span>
                                         <input type="hidden" name="fileOldfavicon" value="<?php echo isset($result['favicon'])?$result['favicon']:"";?>">
                                         <input type="file" class="upload" name="favicon" id="favicon" value="" accept="image/*">
                                      </div>
@@ -124,7 +124,7 @@
                                   <br>
                                   <div class="row col-md-10" align="center">
                                     <div class="form-group sub-btn-wdt">
-                                      <input type="submit" value="Save" class="btn btn-success wdt-bg">
+                                      <input type="submit" value="Guardar" class="btn btn-success wdt-bg">
                                     </div>          
                                   </div>
                                 </div>                                                
@@ -155,40 +155,40 @@
                                 </div>
                                 <div id="phpmailer" style="display:<?php if(isset($result['mail_setting']) && $result['mail_setting']=='php_mailer'){echo "block";}else{ echo 'none'; }?>;" >
                                   <div class="form-group">
-                                    <label class="control-label col-sm-2 thfont" for="">Company Name:</label>
+                                    <label class="control-label col-sm-2 thfont" for="">Nombre de compañia:</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" name="company_name" id="company_name" value="<?php echo isset($result['company_name'])?$result['company_name'] :'';?>" placeholder="Enter Company Name">
+                                      <input type="text" class="form-control" name="company_name" id="company_name" value="<?php echo isset($result['company_name'])?$result['company_name'] :'';?>" placeholder="Nombre de compañia">
                                     </div>
                                   </div>
                                   <div class="form-group">
                                     <label class="control-label col-sm-2 thfont" for="SMTP_EMAIL">SMTP EMAIL:</label>
                                     <div class="col-sm-10">
-                                      <input type="email" class="form-control" name="SMTP_EMAIL" id="SMTP_EMAIL" value="<?php echo isset($result['SMTP_EMAIL'])?$result['SMTP_EMAIL'] :'';?>" placeholder="Enter SMTP EMAIL">
+                                      <input type="email" class="form-control" name="SMTP_EMAIL" id="SMTP_EMAIL" value="<?php echo isset($result['SMTP_EMAIL'])?$result['SMTP_EMAIL'] :'';?>" placeholder="Ingresa SMTP EMAIL">
                                     </div>
                                   </div>
                                   <div class="form-group">
                                     <label class="control-label col-sm-2 thfont" for="HOST">SMTP HOST:</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" name="HOST" id="HOST" value="<?php echo isset($result['HOST'])?$result['HOST'] :'';?>" placeholder="Enter Smtp Host">
+                                      <input type="text" class="form-control" name="HOST" id="HOST" value="<?php echo isset($result['HOST'])?$result['HOST'] :'';?>" placeholder="Ingresa Smtp Host">
                                     </div>
                                   </div>
                                   <div class="form-group">
                                     <label class="control-label col-sm-2 thfont" for="PORT">SMTP PORT:</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" name="PORT" id="PORT" value="<?php echo isset($result['PORT'])?$result['PORT'] :'';?>" placeholder="Enter SMTP PORT">
+                                      <input type="text" class="form-control" name="PORT" id="PORT" value="<?php echo isset($result['PORT'])?$result['PORT'] :'';?>" placeholder="Ingresa SMTP PORT">
                                     </div>
                                   </div>
                                   <div class="form-group">
                                     <label class="control-label col-sm-2 thfont" for="SMTP_SECURE">SMTP SECURE:</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" name="SMTP_SECURE" id="SMTP_SECURE" value="<?php echo isset($result['SMTP_SECURE'])?$result['SMTP_SECURE'] :'';?>" placeholder="Enter SMTP SECURE">
+                                      <input type="text" class="form-control" name="SMTP_SECURE" id="SMTP_SECURE" value="<?php echo isset($result['SMTP_SECURE'])?$result['SMTP_SECURE'] :'';?>" placeholder="Ingresa SMTP SECURE">
                                     </div>
                                   </div>
                                   <div class="form-group">
                                     <label class="control-label col-sm-2 thfont" for="SMTP_PASSWORD">SMTP PASSWORD:</label>
                                     <div class="col-sm-10">
                                       <input type="text" style="display: none;">
-                                      <input type="password" class="form-control col-md-7 col-xs-12 showpassword" name="SMTP_PASSWORD" id="test1" value="<?php echo isset($result['SMTP_PASSWORD'])?$result['SMTP_PASSWORD'] :'';?>" placeholder="Enter SMTP PASSWORD">
+                                      <input type="password" class="form-control col-md-7 col-xs-12 showpassword" name="SMTP_PASSWORD" id="test1" value="<?php echo isset($result['SMTP_PASSWORD'])?$result['SMTP_PASSWORD'] :'';?>" placeholder="Ingresa SMTP PASSWORD">
                                       <input id="test2" type="checkbox" />Show password
                                     </div>
                                   </div>
@@ -197,13 +197,13 @@
                                   <div class="form-group">
                                     <label class="control-label col-sm-2 thfont" for="">Company Name:</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" name="company_name" id="company_name" value="<?php echo isset($result['company_name'])?$result['company_name'] :'';?>" placeholder="Enter Company Name">
+                                      <input type="text" class="form-control" name="company_name" id="company_name" value="<?php echo isset($result['company_name'])?$result['company_name'] :'';?>" placeholder="Ingresa nombre de compañia">
                                     </div>
                                   </div>
                                   <div class="form-group">
                                     <label class="control-label col-sm-2 thfont" for="EMAIL">Email:</label>
                                     <div class="col-sm-10">
-                                      <input type="email" class="form-control" name="EMAIL" id="EMAIL" value="<?php echo isset($result['EMAIL'])?$result['EMAIL'] :'';?>" placeholder="Enter email id">
+                                      <input type="email" class="form-control" name="EMAIL" id="EMAIL" value="<?php echo isset($result['EMAIL'])?$result['EMAIL'] :'';?>" placeholder="Ingresa email id">
                                     </div>
                                   </div>
                                 </div>
@@ -220,14 +220,14 @@
                         <div class="tab-pane " id="permissionSetting">
                           <div class="row">
                             <div class="box-header my-header">
-                              <h3 class="box-title">Permissions</h3>
+                              <h3 class="box-title">Permisos</h3>
                             </div>
                           </div>
                           <div class="panel-group" id="accordion">
                             <h5 class="over-title">
                               <div class="row form-horizontal">
                                 <div class="col-md-3">
-                                  <a class="btn btn-o btn-success" id="addmoreRoles" href="#"><i class="fa fa-plus"></i> Add User Type</a>
+                                  <a class="btn btn-o btn-success" id="addmoreRoles" href="#"><i class="fa fa-plus"></i> Agregar tipo</a>
                                 </div>
                                 <div class="col-md-9">
                                   <div class="form-horizontal"  id="addmoreRolesShow">
@@ -235,7 +235,7 @@
                                       <div class="form-group">
                                         <label for="roles" class="control-label col-md-2 thfont">User Type</label>
                                         <div class="col-md-5">
-                                          <input type="text" name="roles"  id="roles"  class="form-control" placeholder="Enter User Roles" />
+                                          <input type="text" name="roles"  id="roles"  class="form-control" placeholder="Ingresa rol de usuario" />
                                           <p id="showRolesMSG" style="color:red;"></p>
                                         </div>
                                         <button type="button" id="rolesAdd" class="btn  btn-success">Add</button>

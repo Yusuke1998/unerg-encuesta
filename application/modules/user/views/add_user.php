@@ -17,14 +17,14 @@
 						<div class="col-md-6">
 						  <div class="form-group">
 						    <label for="">Name</label>
-						    <input type="text" name="name" value="<?php echo isset($userData->name)?$userData->name:'';?>" class="form-control" placeholder="Name">
+						    <input type="text" name="name" value="<?php echo isset($userData->name)?$userData->name:'';?>" class="form-control" placeholder="Nombre">
 						  </div>
 						</div>
 					
 						<div class="col-md-6">
 						  <div class="form-group">
 						    <label for="">Email</label>
-						    <input type="text" name="email" value="<?php echo isset($userData->email)?$userData->email:'';?>" class="form-control" placeholder="Email">
+						    <input type="text" name="email" value="<?php echo isset($userData->email)?$userData->email:'';?>" class="form-control" placeholder="Correo electronico">
 						  </div>
 						</div>
 					
@@ -47,29 +47,29 @@
         <?php if(isset($userData)){ ?>
         <div class="col-md-12">
           <div class="form-group">
-          <label for="">Current Password</label>
+          <label for="">Contraseña actual</label>
             <input type="text" style="display: none">
-             <input type="Password" name="currentpassword" class="form-control" value="" placeholder="Password">
+             <input type="Password" name="currentpassword" class="form-control" value="" placeholder="Contraseña">
           </div>
         </div>
         <?php }
         else { ?>
         <div class="col-md-12">
           <div class="form-group">
-          <label for="">Password</label>
-             <input type="Password" name="password" class="form-control" value="" placeholder="Password" readonly onfocus="this.removeAttribute('readonly')">
+          <label for="">Contraseña</label>
+             <input type="Password" name="password" class="form-control" value="" placeholder="Contraseña" readonly onfocus="this.removeAttribute('readonly')">
           </div>
         </div>
         <?php } if(isset($userData)){ ?>
           <div class="col-md-6">
             <div class="form-group">
             <label for="">Password</label>
-               <input type="Password" name="password" class="form-control" value="" placeholder="Password">
+               <input type="Password" name="password" class="form-control" value="" placeholder="Contraseña">
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-            <label for="">Confirm Password</label>
+            <label for="">Confirmar contraseña</label>
                <input type="Password" name="confirmPassword" class="form-control" value="" placeholder="Password">
             </div>
           </div>
@@ -77,7 +77,7 @@
           
           <div class="col-md-12"> 
             <div class="form-group imsize">
-              <label for="exampleInputFile">Image Upload</label>
+              <label for="exampleInputFile">Cargar una imagen</label>
               <div class="pic_size" id="image-holder"> 
                 <?php if(isset($userData->profile_pic) && file_exists('assets/images/'.$userData->profile_pic)){ 
                   $profile_pic = $userData->profile_pic;

@@ -6,7 +6,7 @@
 	<body class="hold-transition register-page">
     <div class="register-box">
       <div class="register-logo">
-        <a href="<?php echo base_url(); ?>"><b>User Login and Management</b></a>
+        <a href="<?php echo base_url(); ?>"><b><?= settings()['website'] ?></b></a>
       </div>
       <div class="register-box-body">
         <p class="login-box-msg">Register a new membership</p>
@@ -18,21 +18,21 @@
         <form action="<?php echo base_url().'user/registration'; ?>" method="post">
           
 						<div class="form-group has-feedback">
-			            <input type="text" name="name" class="form-control" data-validation="required" placeholder="Name">
+			            <input type="text" name="name" class="form-control" data-validation="required" placeholder="Nombre">
 			            <span class="glyphicon glyphicon-user form-control-feedback"></span>
 			          </div>
 					
 						<div class="form-group has-feedback">
-			            <input type="text" name="email" class="form-control" data-validation="required" placeholder="Email">
+			            <input type="text" name="email" class="form-control" data-validation="required" placeholder="Correo electronico">
 			            <span class="glyphicon glyphicon-user form-control-feedback"></span>
 			          </div>
 					
            <div class="form-group has-feedback">
-            <input type="password" class="form-control" name="password_confirmation" placeholder="Password" data-validation="required">
+            <input type="password" class="form-control" name="password_confirmation" placeholder="Contraseña" data-validation="required">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" name="password" class="form-control" placeholder="Retype password" data-validation="confirmation">
+            <input type="password" name="password" class="form-control" placeholder="Repite contraseña" data-validation="confirmation">
             <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
@@ -53,12 +53,12 @@
               <div class="col-xs-12">
                <!--  <input type="hidden" name="user_type" value="<?php //echo setting_all('user_type');?>"> -->
                 <input type="hidden" name="call_from" value="reg_page">
-                <button type="submit" name="submit" class="btn btn-primary btn-block btn-flat btn-color">Register</button>
+                <button type="submit" name="submit" class="btn btn-primary btn-block btn-flat btn-color">Registrar</button>
               </div>
             </div>
         </form>
     	  <br>
-        <a href="<?php echo base_url('user/login');?>" class="text-center">I already have a membership</a>
+        <a href="<?php echo base_url('user/login');?>" class="text-center">Ya tengo usuario</a>
       </div>
       <!-- /.form-box -->
     </div>

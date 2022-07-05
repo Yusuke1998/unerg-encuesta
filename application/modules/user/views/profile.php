@@ -10,7 +10,7 @@
     <!-- Profile Image -->
     <div class="box box-success pad-profile">
      	<div class="box-header with-border">
-        <h3 class="box-title">My Account <small></small></h3>
+        <h3 class="box-title">Mi cuenta <small></small></h3>
       </div>
       <form method="post" enctype="multipart/form-data" action="<?php echo base_url().'user/add_edit' ?>" class="form-label-left">
         <div class="box-body box-profile">
@@ -25,21 +25,21 @@
             </div>
             <br>
             <div class="fileUpload btn btn-success wdt-bg">
-                <span>Change Picture</span>
+                <span>Cambiar foto</span>
                 <input id="fileUpload" class="upload" name="profile_pic" type="file" accept="image/*" /><br />
                 <input type="hidden" name="fileOld" value="<?php echo isset($user_data[0]->profile_pic)?$user_data[0]->profile_pic:'';?>" />
             </div>
           </div>
           <div class="col-md-8">
-            <h3>Personal Information:</h3>
+            <h3>Informacion personal:</h3>
             
 
 					<div class="form-group has-feedback">
-		              <label for="exampleInputstatus">Status:</label>
+		              <label for="exampleInputstatus">Estatus:</label>
 		              <select name="status" id="status" class="form-control">
-		        			<option value="active" <?php echo (isset($user_data[0]->status) && $user_data[0]->status == 'active' ?'selected="selected"':'');?> >Active</option>
+		        			<option value="active" <?php echo (isset($user_data[0]->status) && $user_data[0]->status == 'active' ?'selected="selected"':'');?> >Activo</option>
 		        			
-		        			<option value="deleted" <?php echo (isset($user_data[0]->status) && $user_data[0]->status == 'deleted' ?'selected="selected"':'');?> >Deleted</option>
+		        			<option value="deleted" <?php echo (isset($user_data[0]->status) && $user_data[0]->status == 'deleted' ?'selected="selected"':'');?> >Desactivado</option>
 		        			
 		              </select>
 		            </div>
@@ -47,42 +47,42 @@
 					
 
 					<div class="form-group has-feedback clear-both">
-		              <label for="exampleInputname">Name:</label>
-		              <input type="text" id="name" name="name" value="<?php echo (isset($user_data[0]->name)?$user_data[0]->name:'');?>" required="required" class="form-control" placeholder="Name">
+		              <label for="exampleInputname">Nombre:</label>
+		              <input type="text" id="name" name="name" value="<?php echo (isset($user_data[0]->name)?$user_data[0]->name:'');?>" required="required" class="form-control" placeholder="Nombre">
 		              <span class="glyphicon glyphicon-user form-control-feedback"></span>
 		            </div>
 
 					
 
 					<div class="form-group has-feedback clear-both">
-		              <label for="exampleInputemail">Email:</label>
-		              <input type="text" id="email" name="email" value="<?php echo (isset($user_data[0]->email)?$user_data[0]->email:'');?>" required="required" class="form-control" placeholder="Email">
+		              <label for="exampleInputemail">Correo electronico:</label>
+		              <input type="text" id="email" name="email" value="<?php echo (isset($user_data[0]->email)?$user_data[0]->email:'');?>" required="required" class="form-control" placeholder="Correo electronico">
 		              <span class="glyphicon glyphicon-user form-control-feedback"></span>
 		            </div>
 
 					
               <br>
-            <h3>Change Password:</h3>
+            <h3>Cambiar contraseña:</h3>
             <div class="form-group has-feedback">
-              <label for="exampleInputEmail1">Current Password:</label>
+              <label for="exampleInputEmail1">Contraseña actual:</label>
               <input id="pass11" class="form-control" pattern=".{6,}" type="password" placeholder="********" name="currentpassword" title="6-14 characters">
               <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>                       
             <div class="form-group has-feedback">
-              <label for="exampleInputEmail1">New Password:</label>
-              <input type="password" class="form-control" placeholder="New Password" name="password">
+              <label for="exampleInputEmail1">Nueva contraseña:</label>
+              <input type="password" class="form-control" placeholder="Nueva contraseña" name="password">
               <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
             </div>                       
             <div class="form-group has-feedback">
-              <label for="exampleInputEmail1">Confirm New Password:</label>
-              <input type="password" class="form-control" placeholder="Confirm New Password" name="confirmPassword">
+              <label for="exampleInputEmail1">Confirmar nueva contraseña:</label>
+              <input type="password" class="form-control" placeholder="Confirmar nueva contraseña" name="confirmPassword">
               <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
             </div>  
             <br>
             <div class="form-group has-feedback sub-btn-wdt" >
               <input type="hidden" name="users_id" value="<?php echo isset($user_data[0]->users_id)?$user_data[0]->users_id:''; ?>">
               <input type="hidden" name="user_type" value="<?php echo isset($user_data[0]->user_type)?$user_data[0]->user_type:''; ?>">
-              <button name="submit1" type="button" id="profileSubmit" class="btn btn-success btn-md wdt-bg">Save</button>  
+              <button name="submit1" type="button" id="profileSubmit" class="btn btn-success btn-md wdt-bg">Guardar</button>  
               <!-- <div class=" pull-right">
               </div> -->
             </div>

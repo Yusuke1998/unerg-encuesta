@@ -76,9 +76,9 @@
                 <span class="hidden-xs"><?php echo isset($this->session->userdata('user_details')[0]->name) ? $this->session->userdata('user_details')[0]->name : ''; ?></span>
               </a>
               <ul class="dropdown-menu" role="menu" style="width: 164px;">
-                <li><a href="<?php echo base_url('user/profile'); ?>"><i class="fa fa-user mr10"></i>My Account</a></li>
+                <li><a href="<?php echo base_url('user/profile'); ?>"><i class="fa fa-user mr10"></i>Mi cuenta</a></li>
                 <li class="divider"></li>
-                <li><a href="<?php echo base_url('user/logout'); ?>"><i class="fa fa-power-off mr10"></i> Sign Out</a></li>
+                <li><a href="<?php echo base_url('user/logout'); ?>"><i class="fa fa-power-off mr10"></i> Cerrar sesion</a></li>
               </ul>
             </li>
           </ul>

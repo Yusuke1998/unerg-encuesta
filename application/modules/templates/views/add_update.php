@@ -4,8 +4,8 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
-				<label for="template_name">Template name</label>
-				<input type="text" placeholder=" Template name" class="form-control" id="template_name" name="template_name" required value="<?php echo isset($data->template_name)?$data->template_name:"";?>"  >
+				<label for="template_name">Nombre de plantilla</label>
+				<input type="text" placeholder=" Nombre de plantilla" class="form-control" id="template_name" name="template_name" required value="<?php echo isset($data->template_name)?$data->template_name:"";?>"  >
 				</div>
 			</div>
 		</div>

@@ -1,11 +1,11 @@
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <a href="<?php echo base_url(); ?>"><b>User Login and Management</b></a>
+      <a href="<?php echo base_url(); ?>"><b><?= settings()['website'] ?></b></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-      <p class="login-box-msg">Please enter your or email address. You will receive a link to create a new password via email.</p>
+      <p class="login-box-msg">Por favor, ingresa tu correo electronico. Recibiras un link en tu correo.</p>
       <?php if($this->session->flashdata('forgotpassword')):?>
         <div class="callout callout-success">
           <h5 style='color:red;' class="fa fa-close">  <?php echo $this->session->flashdata('forgotpassword'); ?></h5>
@@ -13,7 +13,7 @@
       <?php endif ?>
       <form action="<?php echo base_url().'user/forgetpassword'?>" method="post">
         <div class="form-group has-feedback">
-          <input type="email" name="email" class="form-control" placeholder="Email" data-validation="email" />
+          <input type="email" name="email" class="form-control" placeholder="Correo electronico" data-validation="email" />
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="row">

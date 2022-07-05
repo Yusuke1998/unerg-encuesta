@@ -1,4 +1,4 @@
-<footer class="main-footer">Thanks for using Web Project Builder</footer>
+<footer class="main-footer">Unerg - 2022</footer>
     <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
