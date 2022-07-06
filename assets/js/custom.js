@@ -239,6 +239,11 @@ $(".modal-body").on("change", '[name="carrera"]', function(e) {
   makeSelectSede(codigo, null);
 })
 
+$(".box-body").on("change", '[name="carrera"]', function(e) {
+  var codigo = $(this).val();
+  makeSelectSede(codigo, null);
+})
+
 $(".modal-body").on("change", '[name="sede"]', function(e) {
   let sede = $(this).val();
   let carrera = $('[name="carrera"]').val();

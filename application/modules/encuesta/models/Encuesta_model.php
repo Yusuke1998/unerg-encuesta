@@ -47,6 +47,37 @@ class Encuesta_model extends CI_Model {
 		return true;
 	}
 
+	public function getReporteGeneral($anio, $carrera, $sede) {
+		$this->db->select('e.periodo, p.cedula, p.nombres, p.apellidos, c.carrera, s.sede, o.materia, o.turno');
+		$this->db->from('participacion p');
+		$this->db->join('encuesta e', 'e.id = p.encuesta');
+		$this->db->join('carreras c', 'c.codigo = p.carrera');
+		$this->db->join('sedes s', 's.codigo = p.sede');
+		$this->db->join('opciones o', 'o.participacion_id = p.id');
+		$this->db->like('e.periodo', $anio);
+		$this->db->where('p.carrera', $carrera);
+		$this->db->where('p.sede', $sede);
+		$this->db->order_by('p.cedula');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function getReporteResumen($anio, $carrera, $sede) {
+		$this->db->select('e.periodo, count(distinct p.cedula) solicitantes, c.carrera, s.sede, o.materia, o.turno');
+		$this->db->from('participacion p');
+		$this->db->join('encuesta e', 'e.id = p.encuesta');
+		$this->db->join('carreras c', 'c.codigo = p.carrera');
+		$this->db->join('sedes s', 's.codigo = p.sede');
+		$this->db->join('opciones o', 'o.participacion_id = p.id');
+		$this->db->like('e.periodo', $anio);
+		$this->db->where('p.carrera', $carrera);
+		$this->db->where('p.sede', $sede);
+		$this->db->order_by('p.cedula');
+		$this->db->group_by('o.materia, o.turno');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	function delete($id = null) {
 		if ($id) {
 			$this->db->where('id', $id);  

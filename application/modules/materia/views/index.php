@@ -12,11 +12,11 @@
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <h3 class="box-title">Materias</h3>
-                        <div class="box-tools">
-                            <?php if (CheckPermission("users", "own_create")) { ?>
+                        <!-- <div class="box-tools">
+                            <?php #if (CheckPermission("users", "own_create")) { ?>
                                 <button type="button" class="btn-sm  btn btn-success modalButtonMateria" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> Nueva Materia</button>
-                            <?php } ?>
-                        </div>
+                            <?php #} ?>
+                        </div> -->
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -26,7 +26,7 @@
                                     <th><input type="checkbox" class="selAll"></th>
                                     <th>Encuesta (periodo)</th>
                                     <th>Materia</th>
-                                    <th>&nbsp;</th>
+                                    <!-- <th>&nbsp;</th> -->
                                 </tr>
                             </thead>
                             <tbody>
